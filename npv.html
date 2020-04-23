@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h4>Opłacalność inwestycji</h4>
+    <hr>
+    <div><button class="submit" onclick="helpNPV()">Instrukcja</button><button class="submit" onclick="formulaNPV()">Wzory</button></div>
+    <hr>
+    <div>
+        <input type = "text" id="yearNumberNPV" name="yearNumber" placeholder="Czas trwania inwestycji">
+        <button class="submit" onclick="npvCountYears()">Ustaw lata</button></div>
+    <hr>
+
+        <section id="obligatoryNpv" style="display:none"><div class="label"><label for "discount">Stopy procentowe</label></div>
+        <div><input type = "text" name="discount" id="discount" placeholder="Stopa dyskontowa %"></div>
+        <div><input type = "text" id="reinvest" name="reinvest" placeholder="Stopa reinwestycji %"></div>
+        <div><input type = "text" id="tax" name="tax" placeholder="Podatek %"></div>
+        <hr></section>
+        <section id="rok0" style="display:none"><div class="label"><label for "year0">Rok 0</label></div>
+        <div><input type = "text" name="year0" id="year0" placeholder="Wydatki na start"><input type = "text" id="curr0" name="curr0" placeholder="Kurs walutowy"></div></section>
+        <section id="rok1" style="display:none"><div class="label"><label for "year1" >Rok 1</label></div>
+        <div><input type = "text" name="year1" id="year1" placeholder="Wartość przepływów"><input type = "text" id="curr1" name="curr1" placeholder="Kurs walutowy"><input type = "text" id="effect1" name="effect1" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok2" style="display:none"><div class="label"><label for "year2">Rok 2</label></div>
+        <div><input type = "text" name="year2" id="year2" placeholder="Wartość przepływów"><input type = "text" id="curr2" name="curr2" placeholder="Kurs walutowy"><input type = "text" id="effect2" name="effect2" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok3" style="display:none"><div class="label"><label for "year3">Rok 3</label></div>
+        <div><input type = "text" name="year3" id="year3" placeholder="Wartość przepływów"><input type = "text" id="curr3" name="curr3" placeholder="Kurs walutowy"><input type = "text" id="effect3" name="effect3" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok4" style="display:none"><div class="label"><label for "year4">Rok 4</label></div>
+        <div><input type = "text" name="year4" id="year4" placeholder="Wartość przepływów"><input type = "text" id="curr4" name="curr4" placeholder="Kurs walutowy"><input type = "text" id="effect4" name="effect4" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok5" style="display:none"><div class="label"><label for "year5">Rok 5</label></div>
+        <div><input type = "text" name="year5" id="year5" placeholder="Wartość przepływów"><input type = "text" id="curr5" name="curr5" placeholder="Kurs walutowy"><input type = "text" id="effect5" name="effect5" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok6" style="display:none"><div class="label"><label for "year6">Rok 6</label></div>
+        <div><input type = "text" name="year6" id="year6" placeholder="Wartość przepływów"><input type = "text" id="curr6" name="curr6" placeholder="Kurs walutowy"><input type = "text" id="effect6" name="effect6" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok7" style="display:none"><div class="label"><label for "year7">Rok 7</label></div>
+        <div><input type = "text" name="year7" id="year7" placeholder="Wartość przepływów"><input type = "text" id="curr7" name="curr7" placeholder="Kurs walutowy"><input type = "text" id="effect7" name="effect7" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok8" style="display:none"><div class="label"><label for "year8">Rok 8</label></div>
+        <div><input type = "text" name="year8" id="year8" placeholder="Wartość przepływów"><input type = "text" id="curr8" name="curr8" placeholder="Kurs walutowy"><input type = "text" id="effect8" name="effect8" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok9" style="display:none"><div class="label"><label for "year9">Rok 9</label></div>
+        <div><input type = "text" name="year9" id="year9" placeholder="Wartość przepływów"><input type = "text" id="curr9" name="curr9" placeholder="Kurs walutowy"><input type = "text" id="effect9" name="effect9" placeholder="Efekty dodatkowe"></div></section>
+        <section id="invSale" style="display:none"><div class="label"><label for "investSale">Sprzedaż inwestycji</label></div>
+        <div><input type = "text" name="investSale" id="investSale" placeholder="Wartość sprzedaży"><input type = "text" id="curr10" name="curr10" placeholder="Kurs walutowy"></div>
+    <hr><button class="submit" onclick="npvCountAll()">Oblicz</button></section>
+    <div id="payback">0</div>
+    <div id="netPV">0</div>
+    <div id="mirrResult">0</div>
+    <div style="width:0; float:left; display:none" id="formulasnetPV"><p float:left>$$NPV=\sum_{t=0}^n \frac{CF}{(1 + r)^t} $$</p><br><p>$$MIRR = \sqrt[n]{\frac{\sum_{t=1}^n CF * (1 + ire)^{n - t}}{CF(-)}} - 1$$</p></div>
+{% endblock %}

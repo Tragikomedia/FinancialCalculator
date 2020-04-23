@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% if forcap == 1 %}
+<div>Kd = {{ fcCost }}%</div>
+{% endif %}
+{% if privst == 1 %}
+<div>Ku = {{ privStock }}%</div>
+{% endif %}
+{% if ordst == 1 %}
+<div>Kz = {{ ordStock0 }}%</div>
+{% elif ordst == 2 %}
+<div>Kz = {{ ordStock1 }}%</div>
+{% endif %}
+{% if cap == 1 %}
+<div>Kz = {{ capm }}%</div>
+{% endif %}
+{% if wac == 1 %}
+<div>WACC = {{ wacc }}%</div>
+{% endif %}
+{% endblock %}

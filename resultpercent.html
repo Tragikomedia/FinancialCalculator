@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% if mode != 3 %}
+<div><p>PV = {{ presentValue }}</p></div>
+<div><p>FV = {{ futureValue }}</p></div>
+<div><p>Oprocentowanie = {{ percentage }}%</p></div>
+{% else %}
+<div><p>Walutowa stopa kredytu = {{ percentage }}%</p></div>
+{% endif %}
+{% endblock %}

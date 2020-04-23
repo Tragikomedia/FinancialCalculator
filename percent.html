@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h4>Kredyty i lokaty</h4>
+<hr>
+<div><button class="submit" onclick="helpPercent()">Instrukcja</button><button class="submit" onclick="formulaPercent()">Wzory</button></div>
+<hr>
+<div>
+    <div class="label"><label for "percentYear">Czas trwania</label></div>
+    <div><input type = "text" id="percentYear" id="percentYear" placeholder="Lata, miesiące lub inne okresy"></div>
+    <div class="label"><label for "presentValue">Poszukiwana</label></div>
+    <div><input type = "text" id="presentValue" id="presentValue" placeholder="Wartość bazowa PV"></div>
+    <div><input type = "text" id="futureValue" placeholder="Wartość przyszła FV"></div>
+    <div class="label"><label for "percentage">Dodatkowe informacje</label></div>
+    <div><input type = "text" id="percentage" placeholder="Oprocentowanie %"></div>
+    <div><input type = "text" id="capitalization" placeholder="Kapitalizacja w czasie"></div>
+    <div><input type = "text" id="forwardex" placeholder="Kurs walutowy"></div>
+    <hr>
+    <div><button class = "submit" onclick="countPercent()">Oblicz</div>
+    <hr>
+    <div id="percentResult">0</div>
+<hr>
+<div><h4>Walutowa stopa kredytu</h4>
+    <div><input type = "text" id="percenta" placeholder="Oprocentowanie %"></div>
+    <div><input type = "text" id="spotex" placeholder="Kurs spot"></div>
+    <div><input type = "text" id="forward2" placeholder="Kurs forward"></div>
+    <hr>
+    <div><button class="submit" onclick="countCreditRate()">Oblicz</div>
+    <hr>
+    <div id="currencyCreditRate">Walutowa stopa = 0</div>
+</div>
+<hr>
+<div style="width:0; float:left; display:none" id="formulasPercent"><p float:left>$$FV = PV * (1 + i * n)$$</p><br><p>$$r = (1 + rf) * (1 + \frac{St - So}{So}) - 1$$</p></div>
+{% endblock %}

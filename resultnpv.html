@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<p>NPV = {{ npv }}</p>
+{% if ismirr %}
+<p>MIRR = {{ mirr }}%</p>
+{% else %}
+<p>Brak danych do obliczenia MIRR</p>
+{% endif %}
+{% if returnmonth < 50 %}
+<p>Zdyskontowany okres zwrotu to {{ returnyear }} l. i  {{ returnmonth }} m.</p>
+{% else %}
+<p>Inwestycja nigdy się nie zwróci</p>
+{% endif %}
+{% endblock %}

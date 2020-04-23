@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section class="overwhelm"><section class="pecet"><h4>Opłacalność inwestycji</h4>
+    <hr>
+    <div><button class="submit" onclick="helpNPV()">Instrukcja</button><button class="submit" onclick="formulaNPV()">Wzory</button></div>
+    <hr>
+    <div>
+        <input type = "text" id="yearNumberNPV" name="yearNumber" placeholder="Czas trwania inwestycji">
+        <button class="submit" onclick="npvCountYears()">Ustaw lata</button></div>
+    <hr>
+
+        <section id="obligatoryNpv" style="display:none"><div class="label"><label for "discount">Stopy procentowe</label></div>
+        <div><input type = "text" name="discount" id="discount" placeholder="Stopa dyskontowa %"></div>
+        <div><input type = "text" id="reinvest" name="reinvest" placeholder="Stopa reinwestycji %"></div>
+        <div><input type = "text" id="tax" name="tax" placeholder="Podatek %"></div>
+        <hr></section>
+        <section id="rok0" style="display:none"><div class="label"><label for "year0">Rok 0</label></div>
+        <div><input type = "text" name="year0" id="year0" placeholder="Wydatki na start"><input type = "text" id="curr0" name="curr0" placeholder="Kurs walutowy"></div></section>
+        <section id="rok1" style="display:none"><div class="label"><label for "year1" >Rok 1</label></div>
+        <div><input type = "text" name="year1" id="year1" placeholder="Wartość przepływów"><input type = "text" id="curr1" name="curr1" placeholder="Kurs walutowy"><input type = "text" id="effect1" name="effect1" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok2" style="display:none"><div class="label"><label for "year2">Rok 2</label></div>
+        <div><input type = "text" name="year2" id="year2" placeholder="Wartość przepływów"><input type = "text" id="curr2" name="curr2" placeholder="Kurs walutowy"><input type = "text" id="effect2" name="effect2" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok3" style="display:none"><div class="label"><label for "year3">Rok 3</label></div>
+        <div><input type = "text" name="year3" id="year3" placeholder="Wartość przepływów"><input type = "text" id="curr3" name="curr3" placeholder="Kurs walutowy"><input type = "text" id="effect3" name="effect3" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok4" style="display:none"><div class="label"><label for "year4">Rok 4</label></div>
+        <div><input type = "text" name="year4" id="year4" placeholder="Wartość przepływów"><input type = "text" id="curr4" name="curr4" placeholder="Kurs walutowy"><input type = "text" id="effect4" name="effect4" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok5" style="display:none"><div class="label"><label for "year5">Rok 5</label></div>
+        <div><input type = "text" name="year5" id="year5" placeholder="Wartość przepływów"><input type = "text" id="curr5" name="curr5" placeholder="Kurs walutowy"><input type = "text" id="effect5" name="effect5" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok6" style="display:none"><div class="label"><label for "year6">Rok 6</label></div>
+        <div><input type = "text" name="year6" id="year6" placeholder="Wartość przepływów"><input type = "text" id="curr6" name="curr6" placeholder="Kurs walutowy"><input type = "text" id="effect6" name="effect6" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok7" style="display:none"><div class="label"><label for "year7">Rok 7</label></div>
+        <div><input type = "text" name="year7" id="year7" placeholder="Wartość przepływów"><input type = "text" id="curr7" name="curr7" placeholder="Kurs walutowy"><input type = "text" id="effect7" name="effect7" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok8" style="display:none"><div class="label"><label for "year8">Rok 8</label></div>
+        <div><input type = "text" name="year8" id="year8" placeholder="Wartość przepływów"><input type = "text" id="curr8" name="curr8" placeholder="Kurs walutowy"><input type = "text" id="effect8" name="effect8" placeholder="Efekty dodatkowe"></div></section>
+        <section id="rok9" style="display:none"><div class="label"><label for "year9">Rok 9</label></div>
+        <div><input type = "text" name="year9" id="year9" placeholder="Wartość przepływów"><input type = "text" id="curr9" name="curr9" placeholder="Kurs walutowy"><input type = "text" id="effect9" name="effect9" placeholder="Efekty dodatkowe"></div></section>
+        <section id="invSale" style="display:none"><div class="label"><label for "investSale">Sprzedaż inwestycji</label></div>
+        <div><input type = "text" name="investSale" id="investSale" placeholder="Wartość sprzedaży"><input type = "text" id="curr10" name="curr10" placeholder="Kurs walutowy"></div>
+    <hr><button class="submit" onclick="npvCountAll()">Oblicz</button></section>
+    <div id="payback">Zdyskontowany okres zwrotu = ?</div>
+    <div id="netPV">NPV = ?</div>
+    <div id="mirrResult">MIRR = ?</div>
+    <div style="width:0; float:left; display:none" id="formulasnetPV"><p float:left>$$NPV=\sum_{t=0}^n \frac{CF}{(1 + r)^t} $$</p><br><p>$$MIRR = \sqrt[n]{\frac{\sum_{t=1}^n CF * (1 + ire)^{n - t}}{CF(-)}} - 1$$</p></div></section>
+    <section class="pecet"><h4>Koszt kapitału</h4>
+<hr>
+<div><button class="submit" onclick="helpCapital()">Instrukcja</button><button class="submit" onclick="formulaCapital()">Wzory</button></div>
+<hr>
+<div>
+    <div class="label"><label for "debtRate">Kapitał obcy</label></div>
+    <div><input type = "text" id="debtRate" name="debtRate" id="debtRate" placeholder="Koszt długu %"></div>
+    <div><input type = "text" id="taxRate" name="taxRate" placeholder="Podatek %"></div>
+    <hr>
+    <div class="label"><label for "diviperStock">Akcje uprzywilejowane</label></div>
+    <div><input type = "text" id="diviperStock" name="diviperStock" id="diviperStock" placeholder="Dywidenda na akcję"></div>
+    <div><input type = "text" id="stockPriceU" name="stockPriceU" placeholder="Cena akcji"></div>
+    <div><input type = "text" id="emissionCost" name="emissionCost" placeholder="Koszt emisji %"></div>
+    <hr>
+    <div class="label"><label for "diviYear0">Akcje zwykłe</label></div>
+    <div><input type = "text" id="diviYear0" name="diviYear0" id="diviYear0" placeholder="Dywidenda R0"></div>
+    <div><input type = "text" id="diviYear1" name="diviYear1" placeholder="Dywidenda R1"></div>
+    <div><input type = "text" id="stockPriceZ" name="stockPriceZ" placeholder="Cena akcji"></div>
+    <div><input type = "text" id="gRate" name="gRate" placeholder="Ocz. stopa wzrostu %"></div>
+    <hr>
+    <div class="label"><label for "beta">CAPM</label></div>
+    <div><input type = "text" id="beta" name="beta" id="beta" placeholder="Beta"></div>
+    <div><input type = "text" id="noRisk" name="noRisk" placeholder="St. bez ryzyka %"></div>
+    <div><input type = "text" id="walletRate" name="walletRate" placeholder="Rynkowa st. zwrotu %"></div>
+    <hr>
+    <div class="label"><label for "stockUpercent">WACC</label></div>
+    <div><input type = "text" id="stockUpercent" name="stockUpercent" placeholder="Udział akcji uprz. %"></div>
+    <div><input type = "text" id="stockZpercent" name="stockZpercent" placeholder="Udział akcji zwykłych %"></div>
+    <div><input type = "text" id="foreignCpercent" name="foreignCpercent" placeholder="Udział kap. obcego %"></div>
+    <hr></div>
+<button class="submit" onclick="capitalCost()">Oblicz!!!</button>
+<hr>
+<div id="debtResult">Koszt kapitału obcego = ?</div>
+<div id="stockUResult">Koszt akcji uprzyw. = ?</div>
+<div id="stockZResult">Koszt akcji zwykłych = ?</div>
+<div id="capmResult">CAPM = ?</div>
+<div id="waccResult">WACC = ?</div>
+<hr>
+<div style="width:0; float:left; display:none" id="formulasCapital"><p float:left>$$FV = PV * (1 + i * n)$$</p><br><p>$$r = (1 + rf) * (1 + \frac{St - So}{So}) - 1$$</p></div></section>
+<section class="pecet"><h4>Kredyty i lokaty</h4>
+<hr>
+<div><button class="submit" onclick="helpPercent()">Instrukcja</button><button class="submit" onclick="formulaPercent()">Wzory</button></div>
+<hr>
+<div>
+    <div class="label"><label for "percentYear">Czas trwania</label></div>
+    <div><input type = "text" id="percentYear" id="percentYear" placeholder="Lata, miesiące lub inne okresy"></div>
+    <div class="label"><label for "presentValue">Poszukiwana</label></div>
+    <div><input type = "text" id="presentValue" id="presentValue" placeholder="Wartość bazowa PV"></div>
+    <div><input type = "text" id="futureValue" placeholder="Wartość przyszła FV"></div>
+    <div><input type = "text" id="percentage" placeholder="Oprocentowanie %"></div>
+    <div class="label"><label for "capitalization">Dodatkowe informacje</label></div>
+    <div><input type = "text" id="capitalization" placeholder="Kapitalizacja w czasie"></div>
+    <div><input type = "text" id="forwardex" placeholder="Kurs walutowy"></div>
+    <hr>
+    <div><button class = "submit" onclick="countPercent()">Oblicz</div>
+    <hr>
+    <div id="percentResult">Szukana = ?</div>
+<hr>
+<div><h4>Walutowa stopa kredytu</h4>
+    <div><input type = "text" id="percenta" placeholder="Oprocentowanie %"></div>
+    <div><input type = "text" id="spotex" placeholder="Kurs spot"></div>
+    <div><input type = "text" id="forward2" placeholder="Kurs forward"></div>
+    <hr>
+    <div><button class="submit" onclick="countCreditRate()">Oblicz</div>
+    <hr>
+    <div id="currencyCreditRate">Walutowa stopa = ?</div>
+</div>
+<hr>
+<div style="width:0; float:left; display:none" id="formulasPercent"><p float:left>$$FV = PV * (1 + i * n)$$</p><br><p>$$r = (1 + rf) * (1 + \frac{St - So}{So}) - 1$$</p></div>
+<div><h4>Odwracarka kursu walutowego</h4>
+<div><input type="text" id="changeableCurrency" placeholder="Kurs walutowy"><button class="submit" onclick="changeCurrency()">Oblicz</button></div>
+<div id="currencyResult">Odwrócony kurs = ?</div></div></section>
+</section>
+{% endblock %}

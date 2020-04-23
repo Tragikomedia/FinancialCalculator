@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h4>Koszt kapitału</h4>
+<hr>
+<div><button class="submit" onclick="helpCapital()">Instrukcja</button><button class="submit" onclick="formulaCapital()">Wzory</button></div>
+<hr>
+<div><form action="/resultcapital">
+    <div class="label"><label for "debtRate">Kapitał obcy</label></div>
+    <div><input type = "text" id="debtRate" name="debtRate" id="debtRate" placeholder="Koszt długu %"></div>
+    <div><input type = "text" id="taxRate" name="taxRate" placeholder="Podatek %"></div>
+    <hr>
+    <div class="label"><label for "diviperStock">Akcje uprzywilejowane</label></div>
+    <div><input type = "text" id="diviperStock" name="diviperStock" id="diviperStock" placeholder="Dywidenda na akcję"></div>
+    <div><input type = "text" id="stockPriceU" name="stockPriceU" placeholder="Cena akcji"></div>
+    <div><input type = "text" id="emissionCost" name="emissionCost" placeholder="Koszt emisji %"></div>
+    <hr>
+    <div class="label"><label for "diviYear0">Akcje zwykłe</label></div>
+    <div><input type = "text" id="diviYear0" name="diviYear0" id="diviYear0" placeholder="Dywidenda R0"></div>
+    <div><input type = "text" id="diviYear1" name="diviYear1" placeholder="Dywidenda R1"></div>
+    <div><input type = "text" id="stockPriceZ" name="stockPriceZ" placeholder="Cena akcji"></div>
+    <div><input type = "text" id="gRate" name="gRate" placeholder="Ocz. stopa wzrostu %"></div>
+    <hr>
+    <div class="label"><label for "beta">CAPM</label></div>
+    <div><input type = "text" id="beta" name="beta" id="beta" placeholder="Beta"></div>
+    <div><input type = "text" id="noRisk" name="noRisk" placeholder="St. bez ryzyka %"></div>
+    <div><input type = "text" id="walletRate" name="walletRate" placeholder="Rynkowa st. zwrotu %"></div>
+    <hr>
+    <div class="label"><label for "stockUpercent">WACC</label></div>
+    <div><input type = "text" id="stockUpercent" name="stockUpercent" placeholder="Udział akcji uprz. %"></div>
+    <div><input type = "text" id="stockZpercent" name="stockZpercent" placeholder="Udział akcji zwykłych %"></div>
+    <div><input type = "text" id="foreignCpercent" name="foreignCpercent" placeholder="Udział kap. obcego %"></div>
+    <hr>
+    <div><input type = "submit" class="submit" value="Oblicz" method="GET"></div>
+</form></div>
+<button class="submit" onclick="capitalCost()">Oblicz!!!</button>
+<hr>
+<div id="debtResult">0</div>
+<div id="stockUResult">0</div>
+<div id="stockZResult">0</div>
+<div id="capmResult">0</div>
+<div id="waccResult">0</div>
+<hr>
+<div style="width:0; float:left; display:none" id="formulasCapital"><p float:left>$$FV = PV * (1 + i * n)$$</p><br><p>$$r = (1 + rf) * (1 + \frac{St - So}{So}) - 1$$</p></div>
+{% endblock %}

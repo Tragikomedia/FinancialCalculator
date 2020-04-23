@@ -1,0 +1,50 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #2D9CAE;
+  overflow: hidden;
+}
+
+nav a {
+  float: left;
+  color: #CCFFFF;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+nav a:hover {
+  background-color: #08424B;
+  color: #D2EDF2;
+}
+
+p {
+    color: #000000;
+}
+
+.label {
+  font-size: 14px;
+  background-color: #2D9CAE;
+  color: #CCFFFF;
+}
+
+.submit {
+  background-color: #2D9CAE;
+  border: none;
+  color:#CCFFFF;
+  padding: 2px 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.overwhelm {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
